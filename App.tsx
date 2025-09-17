@@ -8,7 +8,7 @@ import { WhatsAppIcon, QRCodeIcon, MomoIcon, BurgerIcon, TeaIcon, RollIcon } fro
 export default function App() {
   const [isModalOpen, setModalOpen] = useState(false);
   const whatsappNumber = "9434320315";
-  const preFilledMessage = "Hi Shri Vinayaka Kitchen, I would like to claim my 10% discount coupon!";
+  const preFilledMessage = "Hi Shri Vinayaka Kitchen, I would like to claim my 15% discount coupon!";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(preFilledMessage)}`;
 
   return (
