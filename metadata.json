@@ -1,0 +1,5 @@
+{
+  "name": "Shri Vinayaka Kitchen - Coupon",
+  "description": "A web application for customers of Shri Vinayaka Kitchen to unlock a special discount coupon by providing their phone number. Features a confetti animation on success.",
+  "requestFramePermissions": []
+}
