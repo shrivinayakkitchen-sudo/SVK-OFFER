@@ -2,7 +2,7 @@ import React from 'react';
 import { LocationIcon, PhoneIcon } from './icons';
 
 export function RestaurantInfo() {
-  const address = "Jamuna Lal Bajaj Road, Khalpara, Siliguri";
+  const address = "Jamuna Lal Bajaj Road, Khalpara, Siliguri (Opp. Chandamama shop)";
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
   return (
