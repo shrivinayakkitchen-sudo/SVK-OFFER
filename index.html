@@ -18,6 +18,26 @@
     .button-animate { animation: subtle-pulse-button 3s ease-in-out infinite; }
     @keyframes fade-in-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+    
+    /* Confetti styles */
+    .confetti-piece {
+      position: absolute;
+      width: 8px;
+      height: 16px;
+      top: -20px;
+      opacity: 0;
+      animation: fall 5s linear forwards;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(0vh) rotateZ(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotateZ(720deg);
+        opacity: 0;
+      }
+    }
   </style>
 <script type="importmap">
 {

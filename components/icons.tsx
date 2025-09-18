@@ -27,6 +27,12 @@ export const CloseIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12"></path></svg>
 );
 
+export const GiftIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
+        <path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3s-3 1.34-3 3c0 .35.07.69.18 1H7.82c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3S2 3.34 2 5c0 .35.07.69.18 1H2c-1.11 0-1.99.89-1.99 2L0 20c0 1.11.89 2 2 2h20c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zM15 5c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM5 5c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm17 15H2V8h2v1c0 .55.45 1 1 1s1-.45 1-1V8h10v1c0 .55.45 1 1 1s1-.45 1-1V8h2v12z"/>
+    </svg>
+);
+
 export const MomoIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}><path d="M19.65 11.65C19.43 10.51 19 9.5 18 9c-1.5-.75-3.5-1.5-3.5-1.5s0 .75-1.5 1.5c-1 .5-1.43 1.51-1.65 2.65C11.17 12.9 12 14.33 12 16c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2c0-1.67.83-3.1 2.15-4.35C8.57 10.51 9 9.5 8 9c-1.5-.75-3.5-1.5-3.5-1.5s0 .75-1.5 1.5C1.94 9.53.5 11.27.5 13.5c0 3.04 2.46 5.5 5.5 5.5h7c3.04 0 5.5-2.46 5.5-5.5c0-2.23-1.44-3.97-3.35-4.85z"></path></svg>
 );
