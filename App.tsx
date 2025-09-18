@@ -138,6 +138,13 @@ export default function App() {
           <RestaurantInfo />
           <TermsSection />
         </main>
+        
+        <footer 
+          className="text-center text-slate-500 text-sm animate-fade-in-up"
+          style={{ animationFillMode: 'backwards', animationDelay: '800ms' }}
+        >
+          © {new Date().getFullYear()} Shri Vinayaka Kitchen. All rights reserved.
+        </footer>
       </div>
 
       <button
