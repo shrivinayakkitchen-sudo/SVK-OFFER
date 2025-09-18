@@ -15,10 +15,12 @@ interface QRCodeModalProps {
 export function QRCodeModal({ isOpen, onClose }: QRCodeModalProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (isOpen) {
       setIsLoading(true);
+      setError(null);
       // Timeout to allow modal to render and QRCode library to be ready
       setTimeout(() => {
         if (canvasRef.current && typeof window.QRCode !== 'undefined') {
@@ -34,13 +36,17 @@ export function QRCodeModal({ isOpen, onClose }: QRCodeModalProps) {
                 light: '#eff6ff', // blue-50
               },
             },
-            (error: Error | null) => {
-              if (error) console.error('QR Code generation failed:', error);
+            (err: Error | null) => {
+              if (err) {
+                console.error('QR Code generation failed:', err);
+                setError('Could not generate QR code.');
+              }
               setIsLoading(false);
             }
           );
         } else {
             console.error('QRCode library is not available or canvas is not ready.');
+            setError('Could not load QR code generator.');
             setIsLoading(false);
         }
       }, 200);
@@ -91,7 +97,12 @@ export function QRCodeModal({ isOpen, onClose }: QRCodeModalProps) {
                     <div className="w-12 h-12 border-4 border-sky-200 border-t-sky-500 rounded-full animate-spin"></div>
                 </div>
             )}
-            <canvas ref={canvasRef} className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}/>
+            {error && !isLoading && (
+              <div className="absolute inset-0 flex items-center justify-center text-red-600 p-4 text-sm font-semibold">
+                  <p>{error}</p>
+              </div>
+            )}
+            <canvas ref={canvasRef} className={`transition-opacity duration-300 ${isLoading || error ? 'opacity-0' : 'opacity-100'}`}/>
         </div>
       </div>
     </div>

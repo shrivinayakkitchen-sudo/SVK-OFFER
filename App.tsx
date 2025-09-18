@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Logo } from './components/Logo';
 import { RestaurantInfo } from './components/RestaurantInfo';
 import { TermsSection } from './components/TermsSection';
 import { QRCodeModal } from './components/QRCodeModal';
 import { Confetti } from './components/Confetti';
-import { QRCodeIcon, MomoIcon, BurgerIcon, TeaIcon, RollIcon, GiftIcon, WhatsAppIcon } from './components/icons';
+import { QRCodeIcon, GiftIcon, WhatsAppIcon } from './components/icons';
 
 interface OfferDetails {
   discount: number;
@@ -16,12 +15,12 @@ interface Offer extends OfferDetails {
   whatsappUrl: string;
 }
 
-// --- ORIGINAL OFFER SYSTEM ---
+// --- OFFER SYSTEM ---
 const OFFERS: Record<string, OfferDetails> = {
   '10_99': {
     discount: 10,
     minOrder: 99,
-    message: "Hi Shri Vinayaka Kitchen, I would like to claim my 10% discount coupon!",
+    message: "Hi Shri Vinayaka Kitchen, I would like to claim my discount coupon!",
   }
 };
 const OFFER_KEYS = Object.keys(OFFERS);
@@ -61,7 +60,6 @@ export default function App() {
 
         setAssignedOffer({ ...offerDetails, whatsappUrl });
         setShowConfetti(true);
-        setTimeout(() => setShowConfetti(false), 6000);
     } catch (err) {
         console.error("Failed to process offer:", err);
         setError("Sorry, something went wrong. Please try again.");
@@ -78,16 +76,10 @@ export default function App() {
   return (
     <div className="relative min-h-screen overflow-hidden">
       {showConfetti && <Confetti />}
-      <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(rgba(147, 197, 253, 0.4) 0.5px, transparent 0.5px)', backgroundSize: '5px 5px' }} />
-
-      <MomoIcon className="absolute top-4 left-4 w-24 h-24 text-sky-300/50 transform -rotate-12 animate-float" style={{ animationDuration: '8s' }} />
-      <BurgerIcon className="absolute top-8 right-4 w-28 h-28 text-sky-300/50 transform rotate-12 animate-float" style={{ animationDuration: '10s', animationDelay: '-2s' }} />
-      <TeaIcon className="absolute bottom-4 left-4 w-24 h-24 text-sky-300/50 transform rotate-6 animate-float" style={{ animationDuration: '9s', animationDelay: '-4s' }} />
-      <RollIcon className="absolute bottom-8 right-4 w-28 h-28 text-sky-300/50 transform -rotate-6 animate-float" style={{ animationDuration: '11s', animationDelay: '-1s' }} />
       
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-4 space-y-6">
-        <header className="text-center text-slate-800 animate-fade-in-up" style={{ animationFillMode: 'backwards' }}>
-          <Logo className="w-24 h-24 mx-auto mb-4" />
+        
+        <header className="text-center text-slate-800 animate-fade-in-up" style={{ animationFillMode: 'backwards', animationDelay: '100ms' }}>
           <h1 className="text-4xl font-bold">Shri Vinayaka Kitchen</h1>
           <p className="text-slate-600 mt-2 max-w-md mx-auto">Your favorite veg spot with offers that make every meal better</p>
         </header>
@@ -96,7 +88,7 @@ export default function App() {
           {!assignedOffer ? (
              <div 
               className="bg-white p-6 rounded-2xl shadow-xl animate-fade-in-up transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl" 
-              style={{ animationFillMode: 'backwards', animationDelay: '200ms' }}
+              style={{ animationFillMode: 'backwards', animationDelay: '300ms' }}
             >
               <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">Unlock Your Coupon!</h3>
               <p className="text-center text-slate-500 mb-4 text-sm">Enter your phone number to get a special discount.</p>
@@ -122,11 +114,11 @@ export default function App() {
             </div>
           ) : (
             <div 
-              className="bg-white p-8 rounded-2xl shadow-xl animate-fade-in-up text-center transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl"
+              className="bg-white p-8 rounded-2xl shadow-xl animate-fade-in-up text-center"
               style={{ animationFillMode: 'backwards', animationDelay: '200ms' }}
             >
-              <h3 className="text-2xl font-bold text-green-600 mb-3">Success! Your Offer is Ready.</h3>
-              <p className="text-slate-600 mb-6">Click the button below to open WhatsApp. Send the pre-written message to claim your coupon from us directly!</p>
+              <h3 className="text-2xl font-bold text-slate-800 mb-4">Your Coupon is Unlocked!</h3>
+              
               <a
                 href={assignedOffer.whatsappUrl}
                 target="_blank"
@@ -136,7 +128,8 @@ export default function App() {
                 <WhatsAppIcon className="w-7 h-7" />
                 <span>Claim on WhatsApp</span>
               </a>
-              <button onClick={handleReset} className="mt-6 text-sm text-slate-500 hover:text-slate-700 hover:underline">
+
+              <button onClick={handleReset} className="mt-6 w-full text-center text-sm text-slate-500 hover:text-slate-700 hover:underline">
                 Not you? Use a different number.
               </button>
             </div>
